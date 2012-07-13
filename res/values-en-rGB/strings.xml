@@ -268,7 +268,7 @@
     <string name="account_setup_incoming_security_none_label" msgid="8300169413118264895">"None"</string>
     <string name="account_setup_incoming_security_ssl_trust_certificates_label" msgid="6151855090123117538">"SSL/TLS (Accept all certificates)"</string>
     <string name="account_setup_incoming_security_ssl_label" msgid="2798501138420163861">"SSL/TLS"</string>
-    <string name="account_setup_incoming_security_tls_trust_certificates_label" msgid="6149084428423662620">"STARTTLS (accept all certificates)"</string>
+    <string name="account_setup_incoming_security_tls_trust_certificates_label" msgid="6149084428423662620">"STARTTLS (Accept all certificates)"</string>
     <string name="account_setup_incoming_security_tls_label" msgid="6573498431821879660">"STARTTLS"</string>
     <string name="account_setup_incoming_delete_policy_label" msgid="9213590134693857912">"Delete email from server"</string>
     <string name="account_setup_incoming_delete_policy_never_label" msgid="3222897501875871041">"Never"</string>
@@ -459,10 +459,11 @@
     <string name="widget_loading" msgid="2340962056927255554">"Loading…"</string>
     <string name="widget_touch_to_configure" msgid="7062039013915225323">"Touch to set up."</string>
     <string name="widget_no_accounts" msgid="2412482205591224408">"You haven\'t set up an email account yet."</string>
+    <string name="widget_no_mailboxes" msgid="5222354534538852579">"This account isn\'t synced. Try again later."</string>
     <string name="more_than_999" msgid="8704425397397918798">"999+"</string>
     <string name="search_hint" msgid="2200412192574686497">"Search emails"</string>
     <string name="search_mailbox_hint" msgid="7854987729678942790">"Search <xliff:g id="ID_1">%1$s</xliff:g>"</string>
-    <string name="search_header_text_fmt" msgid="3857004638127418247">"Search results for \"<xliff:g id="ID_1">%1$s</xliff:g>\""</string>
+    <string name="search_header_text_fmt" msgid="2638602588841231811">"Results"</string>
     <string name="search_slow_warning_title" msgid="2826118321880530239">"Waiting for results"</string>
     <string name="search_slow_warning_message" msgid="8494483410797387903">"Some servers may take a long time."</string>
     <string name="action_bar_mailbox_list_title" msgid="7484457755531286333">"Folders"</string>

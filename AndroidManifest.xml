@@ -21,6 +21,9 @@
     android:versionName="4.1"
     >
 
+    <!-- This needs to be present when we are doing unbundled releases. -->
+    <uses-sdk android:targetSdkVersion="16" android:minSdkVersion="14" />
+
     <original-package
         android:name="com.android.email" />
 
@@ -328,11 +331,7 @@
         <service
             android:name=".service.MailService"
             android:enabled="false"
-            android:exported="true"
             >
-            <intent-filter>
-                <action android:name="com.android.email.intent.action.MAIL_SERVICE_WAKEUP" />
-            </intent-filter>
         </service>
 
         <service
@@ -468,7 +467,7 @@
         <!-- Email AppWidget definitions -->
         <activity
             android:name=".widget.WidgetConfiguration"
-            android:enabled="false"
+            android:enabled="true"
             android:theme="@android:style/Theme.Holo.DialogWhenLarge"
             >
             <intent-filter

@@ -1,4 +1,5 @@
-# keep names that are used by reflection.
+#Email-specific proguard flags that are not covered by UnifiedEmail go here
+
 -keep class com.android.emailcommon.provider.Account
 
 -keepclasseswithmembers class * {
@@ -213,4 +214,9 @@
   *** toByteArray(java.io.Reader);
   *** toByteArray(java.io.Reader, java.lang.String);
   *** toByteArray(java.lang.String);
+}
+
+-keepclasseswithmembers class com.android.email.activity.ThreePaneLayout {
+  *** setMessageListWidthAnim(...);
+  *** setMailboxListLeftAnim(...);
 }

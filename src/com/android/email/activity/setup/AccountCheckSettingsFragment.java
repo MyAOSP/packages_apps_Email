@@ -78,6 +78,7 @@ public class AccountCheckSettingsFragment extends Fragment {
 
     // Support for UI
     private boolean mAttached;
+    private boolean mPaused = false;
     private CheckingDialog mCheckingDialog;
     private MessagingException mProgressException;
 
@@ -168,10 +169,16 @@ public class AccountCheckSettingsFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-
+        mPaused = false;
         if (mState != STATE_START) {
             reportProgress(mState, mProgressException);
         }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mPaused = true;
     }
 
     /**
@@ -181,8 +188,10 @@ public class AccountCheckSettingsFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Utility.cancelTaskInterrupt(mAccountCheckTask);
-        mAccountCheckTask = null;
+        if (mAccountCheckTask != null) {
+            Utility.cancelTaskInterrupt(mAccountCheckTask);
+            mAccountCheckTask = null;
+        }
     }
 
     /**
@@ -206,7 +215,7 @@ public class AccountCheckSettingsFragment extends Fragment {
         mProgressException = ex;
 
         // If we are attached, create, recover, and/or update the dialog
-        if (mAttached) {
+        if (mAttached && !mPaused) {
             FragmentManager fm = getFragmentManager();
 
             switch (newState) {
@@ -706,7 +715,9 @@ public class AccountCheckSettingsFragment extends Fragment {
         public void updateProgress(int progress) {
             mProgressString = getProgressString(progress);
             AlertDialog dialog = (AlertDialog) getDialog();
-            dialog.setMessage(mProgressString);
+            if (dialog != null && mProgressString != null) {
+                dialog.setMessage(mProgressString);
+            }
         }
 
         @Override
@@ -727,6 +738,7 @@ public class AccountCheckSettingsFragment extends Fragment {
             dialog.setButton(DialogInterface.BUTTON_NEGATIVE,
                     context.getString(R.string.cancel_action),
                     new DialogInterface.OnClickListener() {
+                        @Override
                         public void onClick(DialogInterface dialog, int which) {
                             dismiss();
                             target.onCheckingDialogCancel();
@@ -824,6 +836,7 @@ public class AccountCheckSettingsFragment extends Fragment {
                 builder.setPositiveButton(
                         context.getString(android.R.string.ok),
                         new DialogInterface.OnClickListener() {
+                            @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 dismiss();
                                 target.onEditCertificateOk();
@@ -832,6 +845,7 @@ public class AccountCheckSettingsFragment extends Fragment {
                 builder.setNegativeButton(
                         context.getString(android.R.string.cancel),
                         new DialogInterface.OnClickListener() {
+                            @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 dismiss();
                                 target.onErrorDialogEditButton();
@@ -843,6 +857,7 @@ public class AccountCheckSettingsFragment extends Fragment {
                 builder.setPositiveButton(
                         context.getString(R.string.account_setup_failed_dlg_edit_details_action),
                         new DialogInterface.OnClickListener() {
+                            @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 dismiss();
                                 target.onErrorDialogEditButton();
@@ -899,6 +914,7 @@ public class AccountCheckSettingsFragment extends Fragment {
                 .setPositiveButton(
                         context.getString(R.string.okay_action),
                         new DialogInterface.OnClickListener() {
+                            @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 dismiss();
                                 target.onSecurityRequiredDialogResultOk(true);
@@ -907,6 +923,7 @@ public class AccountCheckSettingsFragment extends Fragment {
                 .setNegativeButton(
                         context.getString(R.string.cancel_action),
                         new DialogInterface.OnClickListener() {
+                            @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 dismiss();
                                 target.onSecurityRequiredDialogResultOk(false);

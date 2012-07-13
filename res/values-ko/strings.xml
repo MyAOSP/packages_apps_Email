@@ -235,9 +235,9 @@
     <string name="account_setup_basics_exchange_title" msgid="1147638872869594157">"Exchange 계정 추가"</string>
     <string name="account_setup_basics_exchange_title_alternate" msgid="4980422714586153809">"Exchange ActiveSync 계정 추가"</string>
     <string name="account_setup_basics_headline" msgid="6726590205905464015">"이메일 계정"</string>
-    <string name="accounts_welcome" msgid="1491126253077950685">"간단한 절차만으로 대부분의 계정에 대해 이메일을 설정할 수 있습니다."</string>
-    <string name="accounts_welcome_exchange" msgid="4432917203403596617">"간단한 절차만으로 Exchange 계정을 설정할 수 있습니다."</string>
-    <string name="accounts_welcome_exchange_alternate" msgid="1319376442032224845">"간단한 절차만으로 Exchange ActiveSync 계정을 설정할 수 있습니다."</string>
+    <string name="accounts_welcome" msgid="1491126253077950685">"대부분의 계정에 대해 간단하게 이메일을 설정할 수 있습니다."</string>
+    <string name="accounts_welcome_exchange" msgid="4432917203403596617">"Exchange 계정을 간단하게 설정할 수 있습니다."</string>
+    <string name="accounts_welcome_exchange_alternate" msgid="1319376442032224845">"Exchange ActiveSync 계정을 간단하게 설정할 수 있습니다."</string>
     <string name="account_setup_basics_email_label" msgid="3454164053624112047">"이메일 주소"</string>
     <string name="account_setup_basics_password_label" msgid="9133549799291519298">"비밀번호"</string>
     <string name="account_setup_basics_default_label" msgid="5924790142029806711">"기본적으로 이 계정에서 이메일 전송"</string>
@@ -459,10 +459,11 @@
     <string name="widget_loading" msgid="2340962056927255554">"로드 중..."</string>
     <string name="widget_touch_to_configure" msgid="7062039013915225323">"설정하려면 터치하세요."</string>
     <string name="widget_no_accounts" msgid="2412482205591224408">"아직 이메일 계정을 설정하지 않았습니다."</string>
+    <string name="widget_no_mailboxes" msgid="5222354534538852579">"계정이 동기화되지 않습니다. 나중에 다시 시도하세요."</string>
     <string name="more_than_999" msgid="8704425397397918798">"999+"</string>
     <string name="search_hint" msgid="2200412192574686497">"이메일 검색"</string>
     <string name="search_mailbox_hint" msgid="7854987729678942790">"<xliff:g id="ID_1">%1$s</xliff:g> 검색"</string>
-    <string name="search_header_text_fmt" msgid="3857004638127418247">"\'<xliff:g id="ID_1">%1$s</xliff:g>\'에 대한 검색결과"</string>
+    <string name="search_header_text_fmt" msgid="2638602588841231811">"검색결과"</string>
     <string name="search_slow_warning_title" msgid="2826118321880530239">"결과를 기다리는 중"</string>
     <string name="search_slow_warning_message" msgid="8494483410797387903">"일부 서버는 시간이 오래 걸릴 수 있습니다."</string>
     <string name="action_bar_mailbox_list_title" msgid="7484457755531286333">"폴더"</string>

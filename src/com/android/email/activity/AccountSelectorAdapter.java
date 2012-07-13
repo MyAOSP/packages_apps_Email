@@ -215,6 +215,11 @@ public class AccountSelectorAdapter extends CursorAdapter {
     }
 
     @Override
+    public boolean areAllItemsEnabled() {
+        return false;
+    }
+
+    @Override
     public boolean isEnabled(int position) {
         return (getItemViewType(position) != AdapterView.ITEM_VIEW_TYPE_HEADER_OR_FOOTER);
     }

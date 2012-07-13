@@ -14,7 +14,7 @@
 
 LOCAL_PATH := $(call my-dir)
 
-# Build the Email application itself, along with its tests and tests for the emailcommon
+# Build the Email application itself, along with its tests and the tests for the emailcommon
 # static library.  All tests can be run via runtest email
 
 include $(CLEAR_VARS)
@@ -29,6 +29,7 @@ LOCAL_SRC_FILES := $(call all-java-files-under, src/com/android/email)
 LOCAL_SRC_FILES += $(call all-java-files-under, src/com/beetstra)
 LOCAL_RESOURCE_DIR := $(addprefix $(LOCAL_PATH)/, $(res_dir))
 LOCAL_AAPT_FLAGS := --auto-add-overlay
+LOCAL_AAPT_FLAGS += --extra-packages com.android.ex.chips
 
 LOCAL_STATIC_JAVA_LIBRARIES := android-common com.android.emailcommon guava android-common-chips
 
@@ -36,7 +37,7 @@ LOCAL_PACKAGE_NAME := Email
 
 LOCAL_PROGUARD_FLAG_FILES := proguard.flags
 
-LOCAL_SDK_VERSION := current
+LOCAL_SDK_VERSION := 16
 
 # The Emma tool analyzes code coverage when running unit tests on the
 # application. This configuration line selects which packages will be analyzed,

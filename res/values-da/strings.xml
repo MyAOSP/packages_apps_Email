@@ -154,7 +154,7 @@
     <string name="message_view_attachment_cancel_action" msgid="316700885943712101">"Stop"</string>
     <string name="message_view_status_attachment_saved" msgid="8878790392556284868">"Vedhæftelse gemmes som <xliff:g id="FILENAME">%s</xliff:g>."</string>
     <string name="message_view_status_attachment_not_saved" msgid="2433097334272991035">"Vedhæftning kunne ikke gemmes."</string>
-    <string name="message_view_attachment_background_load" msgid="756797444835526487">"Bemærk: En eller flere vedhæftede filer i din videresendte besked downloades før afsendelse."</string>
+    <string name="message_view_attachment_background_load" msgid="756797444835526487">"Bemærk! En eller flere vedhæftede filer i din videresendte besked downloades før afsendelse."</string>
     <string name="message_view_show_message_action" msgid="5134222901019191436">"Besked"</string>
     <string name="message_view_show_invite_action" msgid="8862797393776226777">"Inviter"</string>
   <plurals name="message_view_show_attachments_action">
@@ -238,7 +238,7 @@
     <string name="accounts_welcome" msgid="1491126253077950685">"Du kan nemt konfigurere e-mail for de fleste konti."</string>
     <string name="accounts_welcome_exchange" msgid="4432917203403596617">"Du kan nemt konfigurere en Exchange-konto."</string>
     <string name="accounts_welcome_exchange_alternate" msgid="1319376442032224845">"Du kan nemt konfigurere en Exchange ActiveSync-konto."</string>
-    <string name="account_setup_basics_email_label" msgid="3454164053624112047">"E-mail-adresse"</string>
+    <string name="account_setup_basics_email_label" msgid="3454164053624112047">"E-mailadresse"</string>
     <string name="account_setup_basics_password_label" msgid="9133549799291519298">"Adgangskode"</string>
     <string name="account_setup_basics_default_label" msgid="5924790142029806711">"Send e-mail fra denne konto som standard."</string>
     <string name="account_setup_basics_manual_setup_action" msgid="8053852205391155912">"Manuel opsætning"</string>
@@ -410,13 +410,13 @@
     <string name="toast_account_not_found" msgid="8144242451730692816">"Kontoen blev ikke fundet. Den er muligvis blevet fjernet."</string>
     <string name="toast_mailbox_not_found" msgid="4960014581292378895">"Mappen blev ikke fundet. Den kan være blevet fjernet."</string>
     <string name="provider_note_live" msgid="2995297671709325333">"Det er kun nogle \"Plus\"-konti med POP-adgang, der tillader, at dette program opretter forbindelse. Hvis du ikke kan logge ind med din rigtige e-mailadresse og adgangskode, har du muligvis ikke en betalt \"Plus\"-konto. Åbn webbrowseren igen for at få adgang til disse e-mailkonti."</string>
-    <string name="provider_note_t_online" msgid="1630642061431427894">"Inden du konfigurerer denne e-mailkonto, skal du gå til T-Onlines websted og oprette en adgangskode for e-mailadgang via POP3."</string>
+    <string name="provider_note_t_online" msgid="1630642061431427894">"Inden du konfigurerer denne e-mailkonto, skal du gå til T-Onlines website og oprette en adgangskode for e-mailadgang via POP3."</string>
     <string name="exchange_name" msgid="1190783774800310346">"Exchange"</string>
     <string name="exchange_name_alternate" msgid="5772529644749041052">"Microsoft Exchange ActiveSync"</string>
     <string name="system_account_create_failed" msgid="3673792980526246177">"Kontoen kunne ikke oprettes. Prøv igen."</string>
     <string name="device_admin_label" msgid="8680224994637869414">"E-mail"</string>
     <string name="device_admin_description" msgid="426727923791430306">"Muliggør serverspecifikke sikkerhedspolitikker"</string>
-    <string name="gal_searching_fmt" msgid="6140450617663543464">"Søger efter <xliff:g id="DOMAIN">%s</xliff:g> …"</string>
+    <string name="gal_searching_fmt" msgid="6140450617663543464">"Søger efter <xliff:g id="DOMAIN">%s</xliff:g>…"</string>
   <plurals name="gal_completed_fmt">
     <item quantity="one" msgid="7496785524617037642">"<xliff:g id="RESULTS">%1$d</xliff:g> resultater fra <xliff:g id="DOMAIN">%2$s</xliff:g>"</item>
     <item quantity="other" msgid="7816121892960632123">"<xliff:g id="RESULTS">%1$d</xliff:g> resultater fra <xliff:g id="DOMAIN">%2$s</xliff:g>"</item>
@@ -459,10 +459,11 @@
     <string name="widget_loading" msgid="2340962056927255554">"Indlæser..."</string>
     <string name="widget_touch_to_configure" msgid="7062039013915225323">"Tryk for at konfigurere."</string>
     <string name="widget_no_accounts" msgid="2412482205591224408">"Du har ikke oprettet en e-mailkonto endnu."</string>
+    <string name="widget_no_mailboxes" msgid="5222354534538852579">"Denne konto er ikke synkroniseret. Prøv igen senere."</string>
     <string name="more_than_999" msgid="8704425397397918798">"999+"</string>
     <string name="search_hint" msgid="2200412192574686497">"Søg i e-mail"</string>
     <string name="search_mailbox_hint" msgid="7854987729678942790">"Søg i <xliff:g id="ID_1">%1$s</xliff:g>"</string>
-    <string name="search_header_text_fmt" msgid="3857004638127418247">"Søgeresultater for \"<xliff:g id="ID_1">%1$s</xliff:g>\""</string>
+    <string name="search_header_text_fmt" msgid="2638602588841231811">"Resultater"</string>
     <string name="search_slow_warning_title" msgid="2826118321880530239">"Venter på resultater"</string>
     <string name="search_slow_warning_message" msgid="8494483410797387903">"Nogle servere kan være langsomme."</string>
     <string name="action_bar_mailbox_list_title" msgid="7484457755531286333">"Mapper"</string>

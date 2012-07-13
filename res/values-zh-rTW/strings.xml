@@ -459,10 +459,11 @@
     <string name="widget_loading" msgid="2340962056927255554">"載入中..."</string>
     <string name="widget_touch_to_configure" msgid="7062039013915225323">"輕觸即可設定。"</string>
     <string name="widget_no_accounts" msgid="2412482205591224408">"您尚未設定電子郵件帳戶。"</string>
+    <string name="widget_no_mailboxes" msgid="5222354534538852579">"這個帳戶尚未同步處理，請稍後再試。"</string>
     <string name="more_than_999" msgid="8704425397397918798">"999+"</string>
     <string name="search_hint" msgid="2200412192574686497">"搜尋電子郵件"</string>
     <string name="search_mailbox_hint" msgid="7854987729678942790">"搜尋<xliff:g id="ID_1">%1$s</xliff:g>"</string>
-    <string name="search_header_text_fmt" msgid="3857004638127418247">"「<xliff:g id="ID_1">%1$s</xliff:g>」的搜尋結果"</string>
+    <string name="search_header_text_fmt" msgid="2638602588841231811">"結果"</string>
     <string name="search_slow_warning_title" msgid="2826118321880530239">"正在等待結果"</string>
     <string name="search_slow_warning_message" msgid="8494483410797387903">"有些伺服器可能需要較長的時間。"</string>
     <string name="action_bar_mailbox_list_title" msgid="7484457755531286333">"資料夾"</string>

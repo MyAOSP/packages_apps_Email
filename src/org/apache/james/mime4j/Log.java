@@ -16,12 +16,14 @@
 
 package org.apache.james.mime4j;
 
-import com.android.emailcommon.Logging;
+import com.android.mail.utils.LogUtils;
 
 /**
  * Empty stub for the apache logging library.
  */
 public class Log {
+    private static final String LOG_TAG = new LogUtils().getLogTag();
+
     public Log(Class mClazz) {
     }
 
@@ -51,56 +53,56 @@ public class Log {
 
     public void trace(Object message) {
         if (!isTraceEnabled()) return;
-        android.util.Log.v(Logging.LOG_TAG, toString(message, null));
+        android.util.Log.v(LOG_TAG, toString(message, null));
     }
 
     public void trace(Object message, Throwable t) {
         if (!isTraceEnabled()) return;
-        android.util.Log.v(Logging.LOG_TAG, toString(message, t));
+        android.util.Log.v(LOG_TAG, toString(message, t));
     }
 
     public void debug(Object message) {
         if (!isDebugEnabled()) return;
-        android.util.Log.d(Logging.LOG_TAG, toString(message, null));
+        android.util.Log.d(LOG_TAG, toString(message, null));
     }
 
     public void debug(Object message, Throwable t) {
         if (!isDebugEnabled()) return;
-        android.util.Log.d(Logging.LOG_TAG, toString(message, t));
+        android.util.Log.d(LOG_TAG, toString(message, t));
     }
 
     public void info(Object message) {
         if (!isInfoEnabled()) return;
-        android.util.Log.i(Logging.LOG_TAG, toString(message, null));
+        android.util.Log.i(LOG_TAG, toString(message, null));
     }
 
     public void info(Object message, Throwable t) {
         if (!isInfoEnabled()) return;
-        android.util.Log.i(Logging.LOG_TAG, toString(message, t));
+        android.util.Log.i(LOG_TAG, toString(message, t));
     }
 
     public void warn(Object message) {
-        android.util.Log.w(Logging.LOG_TAG, toString(message, null));
+        android.util.Log.w(LOG_TAG, toString(message, null));
     }
 
     public void warn(Object message, Throwable t) {
-        android.util.Log.w(Logging.LOG_TAG, toString(message, t));
+        android.util.Log.w(LOG_TAG, toString(message, t));
     }
 
     public void error(Object message) {
-        android.util.Log.e(Logging.LOG_TAG, toString(message, null));
+        android.util.Log.e(LOG_TAG, toString(message, null));
     }
 
     public void error(Object message, Throwable t) {
-        android.util.Log.e(Logging.LOG_TAG, toString(message, t));
+        android.util.Log.e(LOG_TAG, toString(message, t));
     }
 
     public void fatal(Object message) {
-        android.util.Log.e(Logging.LOG_TAG, toString(message, null));
+        android.util.Log.e(LOG_TAG, toString(message, null));
     }
 
     public void fatal(Object message, Throwable t) {
-        android.util.Log.e(Logging.LOG_TAG, toString(message, t));
+        android.util.Log.e(LOG_TAG, toString(message, t));
     }
 
     private static String toString(Object o, Throwable t) {

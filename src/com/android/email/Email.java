@@ -115,7 +115,7 @@ public class Email extends Application {
                     Account.CONTENT_URI,
                     Account.ID_PROJECTION,
                     null, null, null);
-            boolean enable = c.getCount() > 0;
+            boolean enable = c != null && c.getCount() > 0;
             setServicesEnabled(context, enable);
             return enable;
         } finally {
@@ -166,12 +166,8 @@ public class Email extends Application {
             MailService.actionReschedule(context);
         }
 
-        pm.setComponentEnabledSetting(
-                new ComponentName(context, WidgetConfiguration.class),
-                enabled ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED :
-                    PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
-                PackageManager.DONT_KILL_APP);
-
+        pm.setComponentEnabledSetting(new ComponentName(context, WidgetConfiguration.class),
+                PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
         // Start/stop the various services depending on whether there are any accounts
         startOrStopService(enabled, context, new Intent(context, AttachmentDownloadService.class));
         NotificationController.getInstance(context).watchForMessages(enabled);

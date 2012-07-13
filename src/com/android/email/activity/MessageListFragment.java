@@ -69,7 +69,6 @@ import com.android.emailcommon.provider.Mailbox;
 import com.android.emailcommon.utility.EmailAsyncTask;
 import com.android.emailcommon.utility.Utility;
 import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Maps;
 
 import java.util.HashMap;
 import java.util.Set;
@@ -355,7 +354,7 @@ public class MessageListFragment extends ListFragment
         mController = Controller.getInstance(mActivity);
         mRefreshManager = RefreshManager.getInstance(mActivity);
 
-        mListAdapter = new MessagesAdapter(mActivity, this);
+        mListAdapter = new MessagesAdapter(mActivity, this, getListContext().isSearch());
         mIsFirstLoad = true;
     }
 
@@ -528,13 +527,11 @@ public class MessageListFragment extends ListFragment
     }
 
     @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.message_list_fragment_option, menu);
-    }
-
-    @Override
     public void onPrepareOptionsMenu(Menu menu) {
-        menu.findItem(R.id.send).setVisible(mShowSendCommand);
+        MenuItem send = menu.findItem(R.id.send);
+        if (send != null) {
+            send.setVisible(mShowSendCommand);
+        }
     }
 
     @Override
@@ -980,7 +977,7 @@ public class MessageListFragment extends ListFragment
             return;
         }
 
-        final HashMap<Long, Boolean> setValues = Maps.newHashMap();
+        final HashMap<Long, Boolean> setValues = new HashMap<Long, Boolean>();
         boolean allWereSet = true;
 
         c.moveToPosition(-1);
@@ -1089,9 +1086,7 @@ public class MessageListFragment extends ListFragment
         SearchResultsCursor searchCursor = (SearchResultsCursor) cursor;
         initSearchHeader();
         mSearchHeader.setVisibility(View.VISIBLE);
-        String header = String.format(
-                mActivity.getString(R.string.search_header_text_fmt),
-                listContext.getSearchParams().mFilter);
+        String header = mActivity.getString(R.string.search_header_text_fmt);
         mSearchHeaderText.setText(header);
         int resultCount = searchCursor.getResultsCount();
         // Don't show a negative value here; this means that the server request failed
@@ -1326,9 +1321,13 @@ public class MessageListFragment extends ListFragment
             mIsRefreshable = cursor.mIsRefreshable;
             mCountTotalAccounts = cursor.mCountTotalAccounts;
 
-            // If this is a search result, open the first message.
+            // If this is a search result, open the first message unless we are
+            // restoring the message position from saved state, in which case,
+            // mSelectedMessageId was already set and should be respected.
             if (UiUtilities.useTwoPane(getActivity()) && mIsFirstLoad && mListContext.isSearch()
-                    && cursor.getCount() > 0) {
+                    && cursor.getCount() > 0
+                    && UiUtilities.showTwoPaneSearchResults(getActivity())
+                    && mSelectedMessageId == -1) {
                 cursor.moveToFirst();
                 onMessageOpen(getMailboxId(), cursor.getLong(MessagesAdapter.COLUMN_ID));
             }
@@ -1391,8 +1390,8 @@ public class MessageListFragment extends ListFragment
          * it may still just be loading.
          */
         private boolean isEmptyAndLoading(Cursor cursor) {
-            return (cursor.getCount() == 0)
-                        && mRefreshManager.isMessageListRefreshing(mMailbox.mId);
+            if (mMailbox == null) return false;
+            return cursor.getCount() == 0 && mRefreshManager.isMessageListRefreshing(mMailbox.mId);
         }
 
         @Override

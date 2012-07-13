@@ -21,6 +21,8 @@ import android.app.FragmentTransaction;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 
 import com.android.email.Clock;
 import com.android.email.Email;
@@ -52,9 +54,11 @@ class UIControllerTwoPane extends UIControllerBase implements ThreePaneLayout.Ca
     static final int INBOX_AUTO_REFRESH_MIN_INTERVAL = 10 * 1000; // in milliseconds
 
     // Other UI elements
-    private ThreePaneLayout mThreePane;
+    protected ThreePaneLayout mThreePane;
 
     private MessageCommandButtonView mMessageCommandButtons;
+
+    private MessageCommandButtonView mInMessageCommandButtons;
 
     public UIControllerTwoPane(EmailActivity activity) {
         super(activity);
@@ -90,6 +94,36 @@ class UIControllerTwoPane extends UIControllerBase implements ThreePaneLayout.Ca
         if (getMessageListMailboxId() != mListContext.getMailboxId()) {
             updateMessageList(true);
         }
+    }
+
+    /**
+     * Handles the {@link android.app.Activity#onCreateOptionsMenu} callback.
+     */
+    public boolean onCreateOptionsMenu(MenuInflater inflater, Menu menu) {
+        int state = mThreePane.getPaneState();
+        boolean handled = false;
+        int menuId = -1;
+        switch (state) {
+            case ThreePaneLayout.STATE_LEFT_VISIBLE:
+                MessageListFragment fragment = getMessageListFragment();
+                MessageListContext context = fragment == null ? null : fragment.getListContext();
+                if (context != null && context.isSearch()) {
+                    menuId = R.menu.message_search_list_fragment_option;
+                } else {
+                    menuId = R.menu.message_list_fragment_option;
+                }
+                handled=  true;
+                break;
+            case ThreePaneLayout.STATE_MIDDLE_EXPANDED:
+            case ThreePaneLayout.STATE_RIGHT_VISIBLE:
+                menuId = R.menu.message_view_fragment_option;
+                handled=  true;
+                break;
+        }
+        if (menuId != -1) {
+            inflater.inflate(menuId, menu);
+        }
+        return handled;
     }
 
     // MailboxListFragment$Callback
@@ -248,6 +282,8 @@ class UIControllerTwoPane extends UIControllerBase implements ThreePaneLayout.Ca
 
         mMessageCommandButtons = mThreePane.getMessageCommandButtons();
         mMessageCommandButtons.setCallback(new CommandButtonCallback());
+        mInMessageCommandButtons = mThreePane.getInMessageCommandButtons();
+        mInMessageCommandButtons.setCallback(new CommandButtonCallback());
     }
 
     @Override
@@ -312,6 +348,7 @@ class UIControllerTwoPane extends UIControllerBase implements ThreePaneLayout.Ca
             getMailboxListFragment().setHighlightedMailbox(fragment.getMailboxId());
         }
         getMessageListFragment().setLayout(mThreePane);
+        mThreePane.setIsSearch(getMessageListFragment().getListContext().isSearch());
     }
 
     @Override
@@ -336,9 +373,8 @@ class UIControllerTwoPane extends UIControllerBase implements ThreePaneLayout.Ca
         if (messageId != Message.NO_MESSAGE) {
             updateMessageView(ft, messageId);
             mThreePane.showRightPane();
-        } else if (mListContext.isSearch()) {
+        } else if (mListContext.isSearch() && UiUtilities.showTwoPaneSearchResults(mActivity)) {
             mThreePane.showRightPane();
-            mThreePane.uncollapsePane();
         } else {
             mThreePane.showLeftPane();
         }
@@ -474,8 +510,12 @@ class UIControllerTwoPane extends UIControllerBase implements ThreePaneLayout.Ca
         if (orderManager == null) {
             // shouldn't happen, but just in case
             mMessageCommandButtons.enableNavigationButtons(false, false, 0, 0);
+            mInMessageCommandButtons.enableNavigationButtons(false, false, 0, 0);
         } else {
             mMessageCommandButtons.enableNavigationButtons(
+                    orderManager.canMoveToNewer(), orderManager.canMoveToOlder(),
+                    orderManager.getCurrentPosition(), orderManager.getTotalMessageCount());
+            mInMessageCommandButtons.enableNavigationButtons(
                     orderManager.canMoveToNewer(), orderManager.canMoveToOlder(),
                     orderManager.getCurrentPosition(), orderManager.getTotalMessageCount());
         }
@@ -485,19 +525,6 @@ class UIControllerTwoPane extends UIControllerBase implements ThreePaneLayout.Ca
     @Override
     public boolean onBackPressed(boolean isSystemBackKey) {
         if (!mThreePane.isPaneCollapsible()) {
-            if (mActionBarController.onBackPressed(isSystemBackKey)) {
-                return true;
-            }
-
-            if (mThreePane.showLeftPane()) {
-                return true;
-            }
-        } else {
-            // If it's not the system back key, always attempt to uncollapse the left pane first.
-            if (!isSystemBackKey && mThreePane.uncollapsePane()) {
-                return true;
-            }
-
             if (mActionBarController.onBackPressed(isSystemBackKey)) {
                 return true;
             }
@@ -668,6 +695,9 @@ class UIControllerTwoPane extends UIControllerBase implements ThreePaneLayout.Ca
             if (mThreePane.isLeftPaneVisible()) {
                 // Mailbox list visible
                 return TITLE_MODE_ACCOUNT_NAME_ONLY;
+            } else if (mThreePane.isRightPaneVisible()
+                    && !mThreePane.isMiddlePaneVisible()) {
+                return TITLE_MODE_MESSAGE_SUBJECT;
             } else {
                 // Mailbox list hidden
                 return TITLE_MODE_ACCOUNT_WITH_MAILBOX;

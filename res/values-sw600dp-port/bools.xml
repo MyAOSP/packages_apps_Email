@@ -14,13 +14,9 @@
      limitations under the License.
 -->
 
-<!-- Note the width of each pane is set by code at runtime.  -->
-<com.android.email.activity.ThreePaneLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:splitMotionEvents="true"
-    >
-
-    <include layout="@layout/three_pane_collapsible_impl" />
-
-</com.android.email.activity.ThreePaneLayout>
-
+<resources>
+    <!-- Expand the middle view when showing the right hand pane -->
+    <bool name="expand_middle_view">false</bool>
+    <!-- Boolean value indicating whether to automatically select and show the first search result -->
+    <bool name="show_two_pane_search_result">false</bool>
+</resources>

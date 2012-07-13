@@ -179,7 +179,7 @@
     <string name="attachment_info_dialog_default_title" msgid="4995755709689009622">"የአባሪ መረጃ"</string>
     <string name="attachment_info_dialog_wifi_title" msgid="3174350153882915382">"የWi-Fi  ተያያዥ ይጠበቃል"</string>
     <string name="attachment_info_wifi_settings" msgid="96432970927503597">"የWi-Fi ቅንብሮች"</string>
-    <string name="attachment_info_application_settings" msgid="4124655487276125596">"መተግበሪያ ቅንጅቶች"</string>
+    <string name="attachment_info_application_settings" msgid="4124655487276125596">"መተግበሪያ ቅንብሮች"</string>
     <string name="attachment_info_unknown" msgid="8342655396805943320">"አባሪ መክፈት አልተቻለም።"</string>
     <string name="attachment_info_malware" msgid="6576029010855055528">"እንዲህ ዓይነቱ ዓባሪ ተንኮል አዘል ሶፍትዌር ሊይዝ ስለሚችል ይህን ፋይል ማስቀመጥ ሆነ መክፈት አትችልም::"</string>
     <string name="attachment_info_policy" msgid="3560422300127587508">"በዚህ መለያ የደህንነት ቋሚ መመሪያዎች የተነሳ ይህ ዓባሪ ሊቀመጥ ሆነ ሊከፈት አይችልም::"</string>
@@ -451,7 +451,7 @@
     <string name="trusted_senders_cleared" msgid="4762002183756251723">"\"ፎቶዎች አሳይ\" ጠርቷል።"</string>
     <string name="position_of_count" msgid="7989353140376877792">"<xliff:g id="ID_1">%1$d</xliff:g> ከ <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="waitinf_for_sync_message_1" msgid="1393719303955128036">"አስምር በመጠበቅ ላይ"</string>
-    <string name="waitinf_for_sync_message_2" msgid="5656175205790694016">"ያንተ ኢሜይል በቅርቡ ብቅ ይላል::"</string>
+    <string name="waitinf_for_sync_message_2" msgid="5656175205790694016">"የአንተ  ኢሜይል በቅርቡ ብቅ ይላል::"</string>
     <string name="widget_other_views" msgid="4988574907386539499">"ለመለወጥ አዶ ንካ::"</string>
     <string name="widget_all_mail" msgid="4352573990283094963">"የተቀላቀለ ገቢ መልዕክት"</string>
     <string name="widget_unread" msgid="4404711399009077833">"ያልተነበበ"</string>
@@ -459,10 +459,11 @@
     <string name="widget_loading" msgid="2340962056927255554">"በመስቀል ላይ…"</string>
     <string name="widget_touch_to_configure" msgid="7062039013915225323">"ለማዘጋጀት ንካ::"</string>
     <string name="widget_no_accounts" msgid="2412482205591224408">"የኢሜይል መለያ ገና አላዋቀሩም።"</string>
+    <string name="widget_no_mailboxes" msgid="5222354534538852579">"ይህ መለያ አልተመሳሰለም። ቆይተህ እንደገና ሞክር።"</string>
     <string name="more_than_999" msgid="8704425397397918798">"999+"</string>
     <string name="search_hint" msgid="2200412192574686497">"ኢሜይል ፈልግ"</string>
     <string name="search_mailbox_hint" msgid="7854987729678942790">"<xliff:g id="ID_1">%1$s</xliff:g> ፈልግ"</string>
-    <string name="search_header_text_fmt" msgid="3857004638127418247">"ለ፡\"<xliff:g id="ID_1">%1$s</xliff:g>\"ውጤቶችንፈልግ"</string>
+    <string name="search_header_text_fmt" msgid="2638602588841231811">"ውጤቶች"</string>
     <string name="search_slow_warning_title" msgid="2826118321880530239">"ውጤቶችን በመጠበቅ ላይ"</string>
     <string name="search_slow_warning_message" msgid="8494483410797387903">"አንዳንድ አገልጋዮች ረጅም ጊዜ ሊወስዱ ይችላሉ።"</string>
     <string name="action_bar_mailbox_list_title" msgid="7484457755531286333">"አቃፊዎች"</string>

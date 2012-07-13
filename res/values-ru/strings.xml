@@ -459,10 +459,11 @@
     <string name="widget_loading" msgid="2340962056927255554">"Загрузка..."</string>
     <string name="widget_touch_to_configure" msgid="7062039013915225323">"Нажмите для настройки."</string>
     <string name="widget_no_accounts" msgid="2412482205591224408">"Вы еще не добавили аккаунт электронной почты."</string>
+    <string name="widget_no_mailboxes" msgid="5222354534538852579">"Аккаунт не синхронизирован. Повторите попытку позже."</string>
     <string name="more_than_999" msgid="8704425397397918798">"999+"</string>
     <string name="search_hint" msgid="2200412192574686497">"Искать в электронной почте"</string>
     <string name="search_mailbox_hint" msgid="7854987729678942790">"Искать в папке \"<xliff:g id="ID_1">%1$s</xliff:g>\""</string>
-    <string name="search_header_text_fmt" msgid="3857004638127418247">"Результаты поиска для \"<xliff:g id="ID_1">%1$s</xliff:g>\""</string>
+    <string name="search_header_text_fmt" msgid="2638602588841231811">"Результаты"</string>
     <string name="search_slow_warning_title" msgid="2826118321880530239">"Ожидание результатов"</string>
     <string name="search_slow_warning_message" msgid="8494483410797387903">"Ожидание ответа от сервера может занять много времени."</string>
     <string name="action_bar_mailbox_list_title" msgid="7484457755531286333">"Папки"</string>

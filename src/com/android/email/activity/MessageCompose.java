@@ -18,8 +18,6 @@ package com.android.email.activity;
 
 import android.app.ActionBar;
 import android.app.ActionBar.OnNavigationListener;
-import android.app.ActionBar.Tab;
-import android.app.ActionBar.TabListener;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.FragmentTransaction;
@@ -339,16 +337,35 @@ public class MessageCompose extends Activity implements OnClickListener, OnFocus
 
     private void setAccount(Intent intent) {
         long accountId = intent.getLongExtra(EXTRA_ACCOUNT_ID, -1);
+        Account account = null;
+        if (accountId != Account.NO_ACCOUNT) {
+            // User supplied an account; make sure it exists
+            account = Account.restoreAccountWithId(this, accountId);
+            // Deleted account is no account...
+            if (account == null) {
+                accountId = Account.NO_ACCOUNT;
+            }
+        }
+        // If we still have no account, try the default
         if (accountId == Account.NO_ACCOUNT) {
             accountId = Account.getDefaultAccountId(this);
+            if (accountId != Account.NO_ACCOUNT) {
+                // Make sure it exists...
+                account = Account.restoreAccountWithId(this, accountId);
+                // Deleted account is no account...
+                if (account == null) {
+                    accountId = Account.NO_ACCOUNT;
+                }
+            }
         }
-        if (accountId == Account.NO_ACCOUNT) {
+        // If we can't find an account, set one up
+        if (accountId == Account.NO_ACCOUNT || account == null) {
             // There are no accounts set up. This should not have happened. Prompt the
             // user to set up an account as an acceptable bailout.
             Welcome.actionStart(this);
             finish();
         } else {
-            setAccount(Account.restoreAccountWithId(this, accountId));
+            setAccount(account);
         }
     }
 
@@ -1537,6 +1554,7 @@ public class MessageCompose extends Activity implements OnClickListener, OnFocus
     private void onAddAttachment() {
         Intent i = new Intent(Intent.ACTION_GET_CONTENT);
         i.addCategory(Intent.CATEGORY_OPENABLE);
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
         i.setType(AttachmentUtilities.ACCEPTABLE_ATTACHMENT_SEND_UI_TYPES[0]);
         mPickingAttachment = true;
         startActivityForResult(
@@ -1675,6 +1693,7 @@ public class MessageCompose extends Activity implements OnClickListener, OnFocus
         return mIncludeQuotedTextCheckBox.isChecked();
     }
 
+    @Override
     public void onClick(View view) {
         if (handleCommand(view.getId())) {
             return;
@@ -1778,7 +1797,7 @@ public class MessageCompose extends Activity implements OnClickListener, OnFocus
             return;
         }
 
-        if (isOpenedFromWidget() || !systemKey) {
+        if ((isOpenedFromWidget() || !systemKey) && (mAccount != null)) {
             // Otherwise, need to open the main screen for the appropriate account.
             // Note that mAccount should always be set by the time the action bar is set up.
             startActivity(Welcome.createOpenAccountInboxIntent(this, mAccount.mId));
@@ -1823,41 +1842,15 @@ public class MessageCompose extends Activity implements OnClickListener, OnFocus
      */
     private void updateActionSelector() {
         ActionBar actionBar = getActionBar();
-        if (shouldUseActionTabs()) {
-            // Tab-based mode switching.
-            if (actionBar.getTabCount() > 0) {
-                selectActionTab(mAction);
-            } else {
-                createAndAddTab(R.string.reply_action, ACTION_REPLY);
-                createAndAddTab(R.string.reply_all_action, ACTION_REPLY_ALL);
-                createAndAddTab(R.string.forward_action, ACTION_FORWARD);
-            }
-
-            actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-        } else {
-            // Spinner based mode switching.
-            if (mActionSpinnerAdapter == null) {
-                mActionSpinnerAdapter = new ActionSpinnerAdapter(this);
-                actionBar.setListNavigationCallbacks(
-                        mActionSpinnerAdapter, ACTION_SPINNER_LISTENER);
-            }
-            actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
-            actionBar.setSelectedNavigationItem(
-                    ActionSpinnerAdapter.getActionPosition(mAction));
+        // Spinner based mode switching.
+        if (mActionSpinnerAdapter == null) {
+            mActionSpinnerAdapter = new ActionSpinnerAdapter(this);
+            actionBar.setListNavigationCallbacks(mActionSpinnerAdapter, ACTION_SPINNER_LISTENER);
         }
+        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
+        actionBar.setSelectedNavigationItem(ActionSpinnerAdapter.getActionPosition(mAction));
         actionBar.setDisplayShowTitleEnabled(false);
     }
-
-    private final TabListener ACTION_TAB_LISTENER = new TabListener() {
-        @Override public void onTabReselected(Tab tab, FragmentTransaction ft) {}
-        @Override public void onTabUnselected(Tab tab, FragmentTransaction ft) {}
-
-        @Override
-        public void onTabSelected(Tab tab, FragmentTransaction ft) {
-            String action = (String) tab.getTag();
-            setAction(action);
-        }
-    };
 
     private final OnNavigationListener ACTION_SPINNER_LISTENER = new OnNavigationListener() {
         @Override
@@ -1923,34 +1916,9 @@ public class MessageCompose extends Activity implements OnClickListener, OnFocus
             } else if (ACTION_FORWARD.equals(action)) {
                 return 2;
             }
-            throw new IllegalArgumentException("Invalid action type for spinner");
+            Log.w(Logging.LOG_TAG, "Invalid action type for spinner");
+            return -1;
         }
-
-    }
-
-    private Tab createAndAddTab(int labelResource, final String action) {
-        ActionBar.Tab tab = getActionBar().newTab();
-        boolean selected = mAction.equals(action);
-        tab.setTag(action);
-        tab.setText(getString(labelResource));
-        tab.setTabListener(ACTION_TAB_LISTENER);
-        getActionBar().addTab(tab, selected);
-        return tab;
-    }
-
-    private void selectActionTab(final String action) {
-        final ActionBar actionBar = getActionBar();
-        for (int i = 0, n = actionBar.getTabCount(); i < n; i++) {
-            ActionBar.Tab tab = actionBar.getTabAt(i);
-            if (action.equals(tab.getTag())) {
-                actionBar.selectTab(tab);
-                return;
-            }
-        }
-    }
-
-    private boolean shouldUseActionTabs() {
-        return getResources().getBoolean(R.bool.message_compose_action_tabs);
     }
 
     @Override
@@ -2246,7 +2214,10 @@ public class MessageCompose extends Activity implements OnClickListener, OnFocus
             displayQuotedText(message.mText, message.mHtml);
             setIncludeQuotedText(true, false);
         } else if (ACTION_FORWARD.equals(mAction)) {
-            clearAddressViews();
+            // If we had previously filled the recipients from a draft, don't erase them here!
+            if (!ACTION_EDIT_DRAFT.equals(getIntent().getAction())) {
+                clearAddressViews();
+            }
             mSubjectView.setText(!subject.toLowerCase().startsWith("fwd:")
                     ? "Fwd: " + subject : subject);
             displayQuotedText(message.mText, message.mHtml);

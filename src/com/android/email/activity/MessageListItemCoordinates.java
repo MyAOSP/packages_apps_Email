@@ -45,6 +45,7 @@ public class MessageListItemCoordinates {
 
     // Static threshold.
     private static int MINIMUM_WIDTH_WIDE_MODE = -1;
+    private static int MSG_USE_WIDE_MODE = -1;
     private static int[] SUBJECT_LENGTHS;
 
     // Checkmark.
@@ -109,15 +110,20 @@ public class MessageListItemCoordinates {
      * Returns the mode of the header view (Wide/Normal/Narrow) given the its
      * measured width.
      */
-    public static int getMode(Context context, int width) {
+    public static int getMode(Context context, int width, boolean isSearch) {
         Resources res = context.getResources();
+        if (isSearch) {
+            return res.getInteger(R.integer.message_search_list_header_mode);
+        }
         if (MINIMUM_WIDTH_WIDE_MODE <= 0) {
             MINIMUM_WIDTH_WIDE_MODE = res.getDimensionPixelSize(R.dimen.minimum_width_wide_mode);
         }
-
+        if (MSG_USE_WIDE_MODE < 0) {
+            MSG_USE_WIDE_MODE = res.getInteger(R.integer.message_use_wide_header_mode);
+        }
         // Choose the correct mode based on view width.
         int mode = NORMAL_MODE;
-        if (width > MINIMUM_WIDTH_WIDE_MODE) {
+        if (MSG_USE_WIDE_MODE != 0 && width > MINIMUM_WIDTH_WIDE_MODE) {
             mode = WIDE_MODE;
         }
         return mode;
@@ -239,7 +245,8 @@ public class MessageListItemCoordinates {
      * Returns coordinates for elements inside a conversation header view given
      * the view width.
      */
-    public static MessageListItemCoordinates forWidth(Context context, int width) {
+    public static MessageListItemCoordinates forWidth(Context context, int width,
+            boolean isSearchResult) {
         MessageListItemCoordinates coordinates = mCache.get(width);
         if (coordinates == null) {
             coordinates = new MessageListItemCoordinates();
@@ -247,7 +254,7 @@ public class MessageListItemCoordinates {
             // TODO: make the field computation done inside of the constructor and mark fields final
 
             // Layout the appropriate view.
-            int mode = getMode(context, width);
+            int mode = getMode(context, width, isSearchResult);
             int height = getHeight(context, mode);
             View view = LayoutInflater.from(context).inflate(getLayoutId(mode), null);
             int widthSpec = MeasureSpec.makeMeasureSpec(width, MeasureSpec.EXACTLY);
