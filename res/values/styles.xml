@@ -36,6 +36,12 @@
         <item name="android:textColor">@color/account_setup_headline_color</item>
     </style>
 
+    <!-- Info text in any account setup screen -->
+    <style name="accountSetupInfoText">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/account_setup_info_text_color</item>
+    </style>
+
     <!-- Wizard buttons on the account setup screens -->
     <!-- TODO these are estimates for the phone UX - final sizes TBD -->
     <style name="accountSetupButton">
