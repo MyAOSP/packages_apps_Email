@@ -16,7 +16,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="permission_read_attachment_label" msgid="9208086010625033590">"Открывать прикрепленные файлы"</string>
+    <string name="permission_read_attachment_label" msgid="9208086010625033590">"Просмотр пересылаемых файлов"</string>
     <string name="permission_read_attachment_desc" msgid="6592948507403743153">"Приложение получит доступ к прикрепленным файлам в сообщениях эл. почты."</string>
     <string name="permission_access_provider_label" msgid="378256653525377586">"Доступ к данным сервиса эл. почты"</string>
     <string name="permission_access_provider_desc" msgid="2221907862438022705">"Приложение получит доступ к базе данных программы электронной почты, которая включает полученные и отправленные письма, имена пользователей и пароли."</string>
@@ -54,7 +54,7 @@
     <string name="mark_as_unread_action" msgid="3766298115778767554">"Отметить как непрочитанное"</string>
     <string name="move_action" msgid="3059189775933985898">"Переместить"</string>
     <string name="plus_cc_label" msgid="3365150001259912183">"Добавить копию"</string>
-    <string name="add_cc_bcc_menu" msgid="4757145078498200242">"Копия/скрытая копия"</string>
+    <string name="add_cc_bcc_menu" msgid="4757145078498200242">"Копия/скрытая"</string>
     <string name="add_file_attachment" msgid="2203398371671979481">"Прикрепить файл"</string>
     <string name="close_action" msgid="533058985745238100">"Закрыть"</string>
     <string name="message_list_send_pending_messages_action" msgid="8502942186631824114">"Отправить все сообщ."</string>
@@ -305,9 +305,6 @@
     <string name="account_setup_options_mail_check_frequency_15min" msgid="5052776740089741793">"Каждые 15 минут"</string>
     <string name="account_setup_options_mail_check_frequency_30min" msgid="1097088928685931864">"Каждые 30 минут"</string>
     <string name="account_setup_options_mail_check_frequency_1hour" msgid="3767715356039692899">"Каждый час"</string>
-    <string name="account_setup_options_mail_check_frequency_2hour">Каждые 2 часа</string>
-    <string name="account_setup_options_mail_check_frequency_4hour">Каждые 4 часа</string>
-    <string name="account_setup_options_mail_check_frequency_1day">Каждый день</string>
     <string name="account_setup_options_default_label" msgid="8869166381331276697">"Сделать аккаунтом электронной почты по умолчанию для отправки сообщений."</string>
     <string name="account_setup_options_notify_label" msgid="1247525794828820038">"Уведомлять при получении сообщения по электронной почте."</string>
     <string name="account_setup_options_sync_contacts_label" msgid="7467467090023434271">"Синхронизировать контакты из этого аккаунта."</string>
@@ -367,7 +364,6 @@
     <string name="account_settings_background_attachments_label" msgid="2980317599840958688">"Загружать прикрепленные файлы"</string>
     <string name="account_settings_background_attachments_summary" msgid="5954218549226189376">"Автоматически загружать файлы из новых сообщений через Wi-Fi"</string>
     <string name="account_settings_notify_label" msgid="1630001017303007974">"Уведомления электронной почты"</string>
-    <string name="account_settings_notify_light_label">Использовать индикатор событий</string>
     <string name="account_settings_summary" msgid="8403582255413830007">"Частота синхронизации, уведомления и другие настройки"</string>
     <string name="account_settings_notify_summary" msgid="6301122709602752038">"При получении почты показывать оповещение в строке состояния системы"</string>
     <string name="account_settings_mail_check_frequency_label" msgid="8271462919214560616">"Частота проверки папки \"Входящие\""</string>

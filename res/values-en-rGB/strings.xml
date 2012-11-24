@@ -316,7 +316,7 @@
     <string name="account_setup_options_mail_window_auto" msgid="4188895354366183790">"Automatic"</string>
     <string name="account_setup_options_mail_window_1day" msgid="3965715241135811407">"One day"</string>
     <string name="account_setup_options_mail_window_3days" msgid="736181102295878114">"Three days"</string>
-    <string name="account_setup_options_mail_window_1week" msgid="5639718031108023741">"one week"</string>
+    <string name="account_setup_options_mail_window_1week" msgid="5639718031108023741">"One week"</string>
     <string name="account_setup_options_mail_window_2weeks" msgid="4567049268124213035">"Two weeks"</string>
     <string name="account_setup_options_mail_window_1month" msgid="5846359669750047081">"One month"</string>
     <string name="account_setup_options_mail_window_all" msgid="5372861827683632364">"All"</string>
@@ -364,7 +364,6 @@
     <string name="account_settings_background_attachments_label" msgid="2980317599840958688">"Download attachments"</string>
     <string name="account_settings_background_attachments_summary" msgid="5954218549226189376">"Auto-download attachments to recent messages via Wi-Fi"</string>
     <string name="account_settings_notify_label" msgid="1630001017303007974">"Email notifications"</string>
-    <string name="account_settings_notify_light_label" msgid="1630001017303007975">"Use notification LED"</string>
     <string name="account_settings_summary" msgid="8403582255413830007">"Sync frequency, notifications, etc."</string>
     <string name="account_settings_notify_summary" msgid="6301122709602752038">"Notify in System bar when emails arrive"</string>
     <string name="account_settings_mail_check_frequency_label" msgid="8271462919214560616">"Inbox check frequency"</string>

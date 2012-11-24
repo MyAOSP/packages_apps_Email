@@ -76,8 +76,8 @@
     <item quantity="other" msgid="6937673814351448076">"<xliff:g id="UNREAD_MESSAGE_COUNT">%1$d</xliff:g> ungelesen (<xliff:g id="ACCOUNT">%2$s</xliff:g>)"</item>
   </plurals>
   <plurals name="notification_new_multi_account_fmt">
-    <item quantity="few" msgid="1991747245324120305">"in <xliff:g id="NUMBER_ACCOUNTS">%d</xliff:g> Google-Konten"</item>
-    <item quantity="other" msgid="2723797835410343458">"in <xliff:g id="NUMBER_ACCOUNTS">%d</xliff:g> Google-Konten"</item>
+    <item quantity="few" msgid="1991747245324120305">"in <xliff:g id="NUMBER_ACCOUNTS">%d</xliff:g> Google Konten"</item>
+    <item quantity="other" msgid="2723797835410343458">"in <xliff:g id="NUMBER_ACCOUNTS">%d</xliff:g> Google Konten"</item>
   </plurals>
     <string name="notification_to_account" msgid="2078557719010667913">"an <xliff:g id="RECEIVER_NAME">%1$s</xliff:g>"</string>
     <string name="notification_multiple_new_messages_fmt" msgid="2606649762841566104">"<xliff:g id="ID_1">%1$d</xliff:g> neue Nachrichten"</string>
@@ -165,7 +165,7 @@
     <string name="message_view_always_show_pictures_button" msgid="6523810929103546865">"Immer anzeigen"</string>
     <string name="message_view_always_show_pictures_prompt" msgid="7685500276479967959">"Bilder von diesem Absender immer anzeigen"</string>
     <string name="message_view_always_show_pictures_confirmation" msgid="6838463134312859448">"Bilder von diesem Absender werden automatisch angezeigt."</string>
-    <string name="message_view_invite_view" msgid="5521032519960111675">"Im Kalender anzeigen"</string>
+    <string name="message_view_invite_view" msgid="5521032519960111675">"Im Kalender ansehen"</string>
     <string name="message_view_invite_title" msgid="3418949733434713805">"Kalendereinladung"</string>
     <string name="message_view_invite_text" msgid="1212799906603873708">"Teilnehmen?"</string>
     <string name="message_view_invite_accept" msgid="744546668021679819">" Ja"</string>
@@ -305,9 +305,6 @@
     <string name="account_setup_options_mail_check_frequency_15min" msgid="5052776740089741793">"Alle 15 Minuten"</string>
     <string name="account_setup_options_mail_check_frequency_30min" msgid="1097088928685931864">"Alle 30 Minuten"</string>
     <string name="account_setup_options_mail_check_frequency_1hour" msgid="3767715356039692899">"Stündlich"</string>
-    <string name="account_setup_options_mail_check_frequency_2hour">Alle 2 Stunden</string>
-    <string name="account_setup_options_mail_check_frequency_4hour">Alle 4 Stunden</string>
-    <string name="account_setup_options_mail_check_frequency_1day">Täglich</string>
     <string name="account_setup_options_default_label" msgid="8869166381331276697">"E-Mails standardmäßig von diesem Konto senden"</string>
     <string name="account_setup_options_notify_label" msgid="1247525794828820038">"Benachrichtigung bei E-Mail-Eingang"</string>
     <string name="account_setup_options_sync_contacts_label" msgid="7467467090023434271">"Kontakte dieses Kontos synchronisieren"</string>
@@ -355,7 +352,7 @@
     <string name="password_expire_warning_content_title" msgid="7174669014074849304">"Sperr-Passwort läuft ab"</string>
     <string name="password_expired_ticker" msgid="4230570412974108968">"Ihre PIN bzw. Ihr Passwort zum Sperren des Bildschirms ist abgelaufen."</string>
     <string name="password_expired_content_title" msgid="4349518706602252979">"Sperr-Passwort abgelaufen"</string>
-    <string name="password_expire_warning_dialog_title" msgid="1687074175399798189">"Passwort für Bildschirmsperre läuft ab"</string>
+    <string name="password_expire_warning_dialog_title" msgid="1687074175399798189">"Passwort für Display-Sperre läuft ab"</string>
     <string name="password_expire_warning_dialog_content_fmt" msgid="4595246020880351045">"Sie müssen Ihre PIN bzw. Ihr Passwort zum Sperren des Bildschirms bald ändern, sonst werden die Daten für <xliff:g id="ACCOUNT">%s</xliff:g> gelöscht. Jetzt ändern?"</string>
     <string name="password_expired_dialog_title" msgid="2186547998125938084">"Sperr-Passwort abgelaufen"</string>
     <string name="password_expired_dialog_content_fmt" msgid="5982207349002500211">"Die Daten für <xliff:g id="ACCOUNT">%s</xliff:g> werden von Ihrem Gerät gelöscht. Sie können sie wiederherstellen, indem Sie Ihre PIN bzw. Ihr Passwort zum Sperren des Bildschirms ändern. Jetzt ändern?"</string>
@@ -367,7 +364,6 @@
     <string name="account_settings_background_attachments_label" msgid="2980317599840958688">"Anhänge herunterladen"</string>
     <string name="account_settings_background_attachments_summary" msgid="5954218549226189376">"Anhänge neuer Nachrichten automatisch über WLAN herunterladen"</string>
     <string name="account_settings_notify_label" msgid="1630001017303007974">"E-Mail-Benachrichtigung"</string>
-    <string name="account_settings_notify_light_label" msgid="1630001017303007975">"Benachrichtigungs-LED verwenden"</string>
     <string name="account_settings_summary" msgid="8403582255413830007">"Synchronisierungshäufigkeit, Benachrichtigungen usw."</string>
     <string name="account_settings_notify_summary" msgid="6301122709602752038">"Bei E-Mail-Eingang Benachrichtigung in der Systemleiste"</string>
     <string name="account_settings_mail_check_frequency_label" msgid="8271462919214560616">"Häufigkeit des E-Mail-Abrufs"</string>
@@ -466,7 +462,7 @@
     <string name="widget_no_mailboxes" msgid="5222354534538852579">"Dieses Konto ist nicht synchronisiert. Versuchen Sie es später erneut."</string>
     <string name="more_than_999" msgid="8704425397397918798">"999+"</string>
     <string name="search_hint" msgid="2200412192574686497">"In E-Mails suchen"</string>
-    <string name="search_mailbox_hint" msgid="7854987729678942790">"<xliff:g id="ID_1">%1$s</xliff:g> durchsuchen"</string>
+    <string name="search_mailbox_hint" msgid="7854987729678942790">"In <xliff:g id="ID_1">%1$s</xliff:g> suchen"</string>
     <string name="search_header_text_fmt" msgid="2638602588841231811">"Ergebnisse"</string>
     <string name="search_slow_warning_title" msgid="2826118321880530239">"Warten auf Ergebnisse"</string>
     <string name="search_slow_warning_message" msgid="8494483410797387903">"Bei einigen Servern benötigen Sie möglicherweise etwas mehr Geduld."</string>

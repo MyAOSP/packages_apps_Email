@@ -33,7 +33,7 @@
     <string name="delete_action" msgid="8421026208288857155">"Slet"</string>
     <string name="forward_action" msgid="669174181042344116">"Videresend"</string>
     <string name="favorite_action" msgid="4664259801498253756">"Stjernemarker"</string>
-    <string name="done_action" msgid="7497990549515580249">"Udfør"</string>
+    <string name="done_action" msgid="7497990549515580249">"Færdig"</string>
     <string name="create_action" msgid="3062715563215392251">"Opret nyt"</string>
     <string name="delete_quick_response_action" msgid="3076922270182841978">"Slet"</string>
     <string name="quick_responses_empty_view" msgid="1693308598242828422">"Ingen hurtige svar"</string>
@@ -468,10 +468,4 @@
     <string name="search_slow_warning_message" msgid="8494483410797387903">"Nogle servere kan være langsomme."</string>
     <string name="action_bar_mailbox_list_title" msgid="7484457755531286333">"Mapper"</string>
     <string name="require_manual_sync_message" msgid="7777357288642785955">"Baggrundssynkronisering for denne konto deaktiveres under roaming."</string>
-    <!-- CM10 additions -->
-    <string name="account_setup_options_mail_check_frequency_2hour">Hver 2. time</string>
-    <string name="account_setup_options_mail_check_frequency_4hour">Hver 4. time</string>
-    <string name="account_setup_options_mail_check_frequency_1day">Hver dag</string>
-    <string name="account_settings_notify_light_label">Brug notifikations-LED</string>
-    <!-- CM10 additions end -->
 </resources>
