@@ -53,6 +53,8 @@
     <string name="mailbox_settings_action" msgid="8008375875310554776">"同期オプション"</string>
     <string name="mark_as_unread_action" msgid="3766298115778767554">"未読にする"</string>
     <string name="move_action" msgid="3059189775933985898">"移動"</string>
+    <string name="newer_action" msgid="8950909456802330593">"前"</string>
+    <string name="older_action" msgid="4504015635360605471">"次"</string>
     <string name="plus_cc_label" msgid="3365150001259912183">"Cc/Bccを追加"</string>
     <string name="add_cc_bcc_menu" msgid="4757145078498200242">"Cc/Bccを追加"</string>
     <string name="add_file_attachment" msgid="2203398371671979481">"ファイルを添付"</string>
@@ -305,6 +307,9 @@
     <string name="account_setup_options_mail_check_frequency_15min" msgid="5052776740089741793">"15分毎"</string>
     <string name="account_setup_options_mail_check_frequency_30min" msgid="1097088928685931864">"30分毎"</string>
     <string name="account_setup_options_mail_check_frequency_1hour" msgid="3767715356039692899">"1時間毎"</string>
+    <string name="account_setup_options_mail_check_frequency_2hour">"2時間毎"</string>
+    <string name="account_setup_options_mail_check_frequency_4hour">"4時間毎"</string>
+    <string name="account_setup_options_mail_check_frequency_1day">"1日毎"</string>
     <string name="account_setup_options_default_label" msgid="8869166381331276697">"いつもこのアカウントでメールを送信"</string>
     <string name="account_setup_options_notify_label" msgid="1247525794828820038">"メールの着信を知らせる"</string>
     <string name="account_setup_options_sync_contacts_label" msgid="7467467090023434271">"このアカウントから連絡先を同期します。"</string>
@@ -388,11 +393,6 @@
     <string name="account_settings_sync_email_enable" msgid="3754115565685222477">"メールを同期する"</string>
     <string name="account_settings_sync_email_summary" msgid="262964076412310990">"このアカウントのメールを同期"</string>
     <string name="account_settings_vibrate_when_label" msgid="708477308761702671">"バイブレーション"</string>
-    <string name="account_settings_vibrate_when_summary" msgid="3991584445166247189">"メール受信: バイブレーションON"</string>
-    <string name="account_settings_vibrate_when_always" msgid="6739506816960483174">"常に使用"</string>
-    <string name="account_settings_vibrate_when_silent" msgid="6417076436551648924">"マナーモード時のみ"</string>
-    <string name="account_settings_vibrate_when_never" msgid="3759680093309511614">"使用しない"</string>
-    <string name="account_settings_vibrate_when_dlg_title" msgid="308167729046312952">"バイブレーション"</string>
     <string name="account_settings_ringtone" msgid="8229878374785575207">"着信音を選択"</string>
     <string name="account_settings_servers" msgid="4925493817981624242">"サーバー設定"</string>
     <string name="account_delete_dlg_title" msgid="6806087520856396608">"アカウントを削除"</string>
