@@ -119,6 +119,7 @@ public class AccountSettingsFragment extends PreferenceFragment
     private CheckBoxPreference mAccountBackgroundAttachments;
     private CheckBoxPreference mInboxNotify;
     private CheckBoxPreference mInboxVibrate;
+    private CheckBoxPreference mInboxNotifyEveryMessage;
     private Preference mInboxRingtone;
     private PreferenceCategory mNotificationsCategory;
     private CheckBoxPreference mSyncContacts;
@@ -388,6 +389,12 @@ public class AccountSettingsFragment extends PreferenceFragment
             mInboxFolderPreferences.setNotificationVibrateEnabled(vibrateSetting);
             preferenceChanged(FolderPreferences.PreferenceKeys.NOTIFICATION_VIBRATE, newValue);
             return true;
+        } else if (FolderPreferences.PreferenceKeys.NOTIFICATION_NOTIFY_EVERY_MESSAGE.equals(key)) {
+            final boolean notifyEveryMessageSetting = (Boolean) newValue;
+            mInboxNotifyEveryMessage.setChecked(notifyEveryMessageSetting);
+            mInboxFolderPreferences.setEveryMessageNotificationEnabled(notifyEveryMessageSetting);
+            preferenceChanged(FolderPreferences.PreferenceKeys.NOTIFICATION_NOTIFY_EVERY_MESSAGE, newValue);
+            return true;
         } else if (FolderPreferences.PreferenceKeys.NOTIFICATIONS_ENABLED.equals(key)) {
             mInboxFolderPreferences.setNotificationsEnabled((Boolean) newValue);
             preferenceChanged(FolderPreferences.PreferenceKeys.NOTIFICATIONS_ENABLED, newValue);
@@ -606,6 +613,8 @@ public class AccountSettingsFragment extends PreferenceFragment
                                     mInboxFolderPreferences.areNotificationsEnabled());
                             mInboxVibrate.setChecked(
                                     mInboxFolderPreferences.isNotificationVibrateEnabled());
+                            mInboxNotifyEveryMessage.setChecked(
+                                    mInboxFolderPreferences.isEveryMessageNotificationEnabled());
                             setRingtoneSummary();
                             // Notification preferences must be disabled until after
                             // mInboxFolderPreferences is available, so enable them here.
@@ -806,6 +815,10 @@ public class AccountSettingsFragment extends PreferenceFragment
             mNotificationsCategory.removePreference(mInboxVibrate);
         }
 
+        mInboxNotifyEveryMessage = (CheckBoxPreference) findPreference(
+                FolderPreferences.PreferenceKeys.NOTIFICATION_NOTIFY_EVERY_MESSAGE);
+        mInboxNotifyEveryMessage.setOnPreferenceChangeListener(this);
+
         final Preference retryAccount = findPreference(PREFERENCE_POLICIES_RETRY_ACCOUNT);
         final PreferenceCategory policiesCategory = (PreferenceCategory) findPreference(
                 PREFERENCE_CATEGORY_POLICIES);
@@ -1004,6 +1017,10 @@ public class AccountSettingsFragment extends PreferenceFragment
                 Settings.System.DEFAULT_NOTIFICATION_URI);
         intent.putExtra(RingtoneManager.EXTRA_RINGTONE_SHOW_SILENT, true);
         intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TYPE, RingtoneManager.TYPE_NOTIFICATION);
+        // RingtoneManager#EXTRA_RINGTONE_DIALOG_THEME is hidden for the public api, and
+        // Email is not compiled through current CyanogenMod api, so jus use the action string
+        // instead the constant
+        intent.putExtra("android.intent.extra.ringtone.DIALOG_THEME", R.style.Theme_RingtoneDialog);
         startActivityForResult(intent, RINGTONE_REQUEST_CODE);
     }
 }
